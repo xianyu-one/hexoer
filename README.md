@@ -12,7 +12,7 @@ hexo博客生产环境构建
 docker run -it --rm \
   --name hexoer \
   -p 4000:4000 \
-  -v YOUR_HEXO_PATH:/blog \\
+  -v YOUR_HEXO_PATH:/hexo \\
   -e TZ="Asia/Taipei" \
   mrxianyu/hexoer:latest \
   /bin/bash
@@ -29,7 +29,7 @@ docker run -it --rm \
 docker run -it --rm \
   --name hexoer \
   -p 4000:4000 \
-  -v YOUR_HEXO_PATH:/blog \
+  -v YOUR_HEXO_PATH:/hexo \
   -v YOUR_SSH_KEY_PATH:/home/hexoer/.ssh \
   -e TZ="Asia/Taipei" \
   -e GIT_AUTHOR_NAME="YOUR_USERNAME" \
