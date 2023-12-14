@@ -30,7 +30,7 @@ jobs:
           platforms: linux/arm64,linux/amd64
           tags: |
             mrxianyu/hexoer:latest
-            mrxianyu/hexoer:${{ steps.get-version.outputs.version }}
+            mrxianyu/hexoer:${{ github.sha }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3
