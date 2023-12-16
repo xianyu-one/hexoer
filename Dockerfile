@@ -9,8 +9,8 @@ RUN apk update && \
     npm install hexo-cli -g && \
     mkdir /hexo && \
     chown node:node /hexo && \
-    echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /etc/profile && \
-    echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /etc/profile
+    echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /home/node/.bashrc && \
+    echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /home/node/.bashrc
 
 USER node
 
