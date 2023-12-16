@@ -1,19 +1,18 @@
-FROM ubuntu:jammy
+FROM node:18-alpine
 
 LABEL org.opencontainers.image.source https://github.com/xianyu-one/hexoer
 
-RUN apt update && apt upgrade -y && \
-    apt install git vim curl wget nodejs npm -y && \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+
+RUN apk update && \
+    apk add git vim curl wget bash && \
     npm install hexo-cli -g && \
     mkdir /hexo && \
-    mkdir /home/hexoer && \
-    useradd -s /bin/bash hexoer && \
-    echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /home/hexoer/.bashrc && \
-    echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /home/hexoer/.bashrc && \
-    chown hexoer:hexoer /hexo && \
-    chown -R hexoer:hexoer /home/hexoer
+    chown node:node /hexo && \
+    echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /etc/profile && \
+    echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /etc/profile
 
-USER hexoer
+USER node
 
 ENV GIT_AUTHOR_NAME=yourname
 ENV GIT_AUTHOR_EMAIL=youremail
