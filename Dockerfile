@@ -2,10 +2,8 @@ FROM node:18-alpine
 
 LABEL org.opencontainers.image.source https://github.com/xianyu-one/hexoer
 
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
-
 RUN apk update && \
-    apk add git vim curl wget bash ssh && \
+    apk add git vim curl wget bash openssh && \
     npm install hexo-cli -g && \
     mkdir /hexo && \
     chown node:node /hexo && \
