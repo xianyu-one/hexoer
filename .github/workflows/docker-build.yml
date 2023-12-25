@@ -22,6 +22,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set timestamp
+        id: timestamp
+        run: echo "timestamp=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -29,8 +33,8 @@ jobs:
           push: true
           platforms: linux/arm64,linux/amd64
           tags: |
-            mrxianyu/hexoer:latest
-            mrxianyu/hexoer:${{ github.sha }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/hexoer:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/hexoer:${{ steps.timestamp.outputs.timestamp }}
 
       - name: Docker Hub Description
         uses: peter-evans/dockerhub-description@v3

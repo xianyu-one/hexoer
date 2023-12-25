@@ -14,6 +14,7 @@ docker run -it --rm \
   -p 4000:4000 \
   -v YOUR_HEXO_PATH:/hexo \\
   -e TZ="Asia/Taipei" \
+  -e USER_UID=1000 \
   mrxianyu/hexoer:latest \
   /bin/bash
 ```
@@ -32,6 +33,7 @@ docker run -it --rm \
   -v YOUR_HEXO_PATH:/hexo \
   -v YOUR_SSH_KEY_PATH:/home/hexoer/.ssh \
   -e TZ="Asia/Taipei" \
+  -e USER_UID=1000 \
   -e GIT_AUTHOR_NAME="YOUR_USERNAME" \
   -e GIT_AUTHOR_EMAIL="YOUR_EMAIL" \
   mrxianyu/hexoer:latest \
