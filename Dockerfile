@@ -2,9 +2,6 @@ FROM node:20-alpine
 
 LABEL org.opencontainers.image.source https://github.com/xianyu-one/hexoer
 
-ARG http_proxy=http://10.233.0.1:7890
-ARG https_proxy=http://10.233.0.1:7890
-
 COPY init.sh /init.sh
 
 RUN apk update && \
