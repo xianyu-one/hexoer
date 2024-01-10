@@ -9,6 +9,7 @@ if [ "$USER_UID" -eq 1000 ]; then
     echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /home/node/.bashrc
     echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /home/node/.bashrc
     echo 'cp -r /ssh-key /home/node/.ssh' >> /home/node/.bashrc
+    chown -R node:node /home/node/
     su -s /bin/bash node
     source /home/node/.bashrc
 else
@@ -18,6 +19,7 @@ else
     echo 'git config --global user.name "${GIT_AUTHOR_NAME}"' >> /home/$USER_UID/.bashrc
     echo 'git config --global user.email "${GIT_AUTHOR_EMAIL}"' >> /home/$USER_UID/.bashrc
     echo 'cp -r /ssh-key /home/"$USER_UID"/.ssh' >> /home/$USER_UID/.bashrc
+    chown -R $USER_UID:$USER_UID /home/$USER_UID/
     su -s /bin/bash $USER_UID
     source /home/$USER_UID/.bashrc
 fi
