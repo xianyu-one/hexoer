@@ -44,3 +44,5 @@ docker run -it --rm \
 * 请将`YOUR_SSH_KEY_PATH`替换为你的ssh密钥文件夹路径
 * 请将`GIT_AUTHOR_NAME`替换为你的git用户名
 * 请将`GIT_AUTHOR_EMAIL`替换为你的git邮箱
+* 请确保你的公钥名称为`id_rsa.pub`
+* 请确保你的私钥名称为`id_rsa`

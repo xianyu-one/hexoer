@@ -12,6 +12,8 @@ if [ "$USER_UID" -eq 1000 ]; then
     chown -R node:node /home/node/
     su -s /bin/bash node
     source /home/node/.bashrc
+    chown 600 /home/node/.ssh/id_rsa
+    chown 644 /home/node/.ssh/id_rsa.pub
 else
     # 当变量$USER_UID不为1000时执行
     adduser -u $USER_UID -D --shell /bin/bash -h /home/$USER_UID $USER_UID
@@ -22,5 +24,7 @@ else
     chown -R $USER_UID:$USER_UID /home/$USER_UID/
     su -s /bin/bash $USER_UID
     source /home/$USER_UID/.bashrc
+    chown 600 /home/$USER_UID/.ssh/id_rsa
+    chown 644 /home/$USER_UID/.ssh/id_rsa.pub
 fi
 
